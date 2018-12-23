@@ -8,12 +8,15 @@ module.exports = {
     entry: './src', //入口文件  在vue-cli main.js
     output: {       //webpack如何输出
         path: path.resolve(__dirname, 'dist'), //定位，输出文件的目标路径
-        filename: '[name].js'
+        publicPath: '/',
+        filename: 'bundle.js'
     },
+    devtool: 'eval-source-map',
     module: {       //模块的相关配置
         rules: [     //根据文件的后缀提供一个loader,解析规则
             {
                 test: /\.js[x]?$/,  //es6 => es5 
+                exclude: '/node_modules/',
                 include: [
                     path.resolve(__dirname, 'src')
                 ],
@@ -21,20 +24,45 @@ module.exports = {
                 use: 'babel-loader'
             },
             {
+                test: /\.scss$/,
+                use: [
+                    "style-loader", // creates style nodes from JS strings
+                    "css-loader", // translates CSS into CommonJS
+                    "sass-loader" // compiles Sass to CSS, using Node Sass by default
+                ]
+            },
+            {
+                test: /\.css$/,
+                use : [
+                    {
+                            loader: 'style-loader',
+                    },
+                    {
+                            loader: 'css-loader',
+                            options: {
+                                    sourceMap: true,
+                            }
+                    }
+                ]
+            },
+            {
                 test: /\.less$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [
-                    'css-loader',
-                    'less-loader'
-                    ]
-                })
+                use: [{
+                  loader: 'style-loader' // creates style nodes from JS strings
+                }, {
+                  loader: 'css-loader' // translates CSS into CommonJS
+                }, {
+                  loader: 'less-loader' // compiles Less to CSS
+                }]
             },
             {       //图片loader
-                test: /\.(png|jpg|gif)$/,
+                test: /\.(png|jpg|gif|svg|ttf|woff|eot)$/,
                 use: [
                     {
-                        loader: 'file-loader' //根据文件地址加载文件
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8000,
+                        }
                     }
                 ]
             }
@@ -42,19 +70,20 @@ module.exports = {
     },
     resolve: { //解析模块的可选项  
         // modules: [ ]//模块的查找目录 配置其他的css等文件
-        extensions: [".js", ".json", ".jsx",".less", ".css"],  //用到文件的扩展名
+        extensions: ['.js', '.less', '.css', '.png', '.jpg'],  //用到文件的扩展名
         alias: { //模快别名列表
-            utils: path.resolve(__dirname,'src/utils')
+            utils: path.resolve(__dirname,'src')
         }
     },
     plugins: [  //插进的引用, 压缩，分离美化
-        new ExtractTextPlugin('[name].css'),  //[name] 默认  也可以自定义name  声明使用
         new HtmlWebpackPlugin({  //将模板的头部和尾部添加css和js模板,dist 目录发布到服务器上，项目包。可以直接上线
             file: 'index.html', //打造单页面运用 最后运行的不是这个
             template: 'src/index.html'  //vue-cli放在跟目录下
         }),
         new CopyWebpackPlugin([  //src下其他的文件直接复制到dist目录下
-            { from:'src/assets/favicon.ico',to: 'favicon.ico' }
+            { from:'src/assets/favicon.ico',to: 'favicon.ico' },
+            { from:'src/images',to: 'images/' },
+            { from:'src/components/styles/font-awesome/css',to: 'components/styles/font-awesome/css/' }
         ]),
         new webpack.ProvidePlugin({  //引用框架 jquery  lodash工具库是很多组件会复用的，省去了import
             '_': 'lodash'  //引用webpack

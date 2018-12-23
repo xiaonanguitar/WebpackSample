@@ -1,0 +1,20 @@
+
+
+.mainContent ul {
+    padding: 100px;
+    font-size: 30px;
+    color: #fff;
+}
+
+.mainContent .title {
+    font-size: 50px;
+    color: #000;
+    margin: 100px 0 30px 0;
+    text-align: center;
+    font-size: 100px;
+}
+
+.mainContent ul li {
+    list-style-type:disc;
+    color: #000;
+}

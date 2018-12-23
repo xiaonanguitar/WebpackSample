@@ -1,0 +1,21 @@
+.logo {
+    display: block;
+    margin: 30px auto;
+    width: 400px;
+    height: 350px;
+}
+
+.mainpage_label {
+    color: #000;
+    display: block;
+    text-align: center;
+    font-size: 60px;
+    margin: "100px 0 0 0"
+}
+
+.getStart {
+    font-size: 25px;
+    color:bule;
+    text-align: center;
+    display: block;
+}

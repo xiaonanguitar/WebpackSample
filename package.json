@@ -24,10 +24,23 @@
     "html-webpack-plugin": "^3.2.0",
     "less": "^3.7.1",
     "less-loader": "^4.1.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "react-redux": "^5.0.7",
+    "sass-loader": "^7.1.0",
     "style-loader": "^0.21.0",
+    "url-loader": "^1.1.2",
     "webpack": "^4.16.0",
     "webpack-cli": "^3.0.8"
+  },
+  "dependencies": {
+    "antd": "^2.7.4",
+    "aphrodite": "^2.2.2",
+    "node-sass": "^4.11.0",
+    "react-addons-css-transition-group": "^15.6.2",
+    "react-magic": "^0.2.3",
+    "react-router": "^2.0.1",
+    "react-router-dom": "^4.3.1",
+    "react-svg": "^4.0.17"
   }
 }

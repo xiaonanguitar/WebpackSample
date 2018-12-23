@@ -1,0 +1,49 @@
+.parent {
+    width: 500px;
+    height: 200px;
+    border: 1px solid #000;
+    vertical-align: middle;
+    margin: 0 auto;
+}
+
+.parent .container {
+    display: table-cell;
+    vertical-align: middle;
+    width: 500px;
+    height: 200px;
+    padding: 0 20px;
+}
+
+.btncontroller {
+    border: 1px solid #000;
+    float: right;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 25px;
+    display: table-cell;
+    margin: 0 auto;
+    vertical-align: middle;
+}
+
+.btncontroller span {
+    vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+    width: 200px;
+    height: 50px;
+}
+
+.flag {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    float: left;
+}
+
+.flag.start {
+    background-color: green;
+}
+
+.flag.stop {
+    background-color: red;
+}
