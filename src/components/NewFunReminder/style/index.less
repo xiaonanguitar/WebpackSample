@@ -1,0 +1,97 @@
+.reminder-popover-wrapper {
+    position: absolute;
+    .reminder-popover {
+        position: absolute;
+        width: 10rem;
+        background: #6c5ce7;
+        box-sizing: border-box;
+        padding: .5rem;
+        border-radius: 10px;
+        &.hide {
+            display: none;
+        }
+        &.right {
+            top: 50%;
+            left: 100%;
+            transform: translate(-5px, -50%);
+            &::before {
+                content: '';
+                position: absolute;
+                display: block;
+                left: -6px;
+                width: 12px;
+                top: 42%;
+                height: 12px;
+                transform: rotate(45deg);
+                background: #6c5ce7;
+                overflow: hidden;
+                border: 0;
+            }
+        }
+        &.bottom {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 20px);
+            &::before {
+                content: '';
+                position: absolute;
+                display: block;
+                left: 44%;
+                width: 12px;
+                top: -4%;
+                height: 12px;
+                transform: rotate(45deg);
+                background: #6c5ce7;
+                overflow: hidden;
+                border: 0;
+            }
+        }
+        > .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 2rem;
+            width: 100%;
+            color: #fff;
+        }
+        .know {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            button {
+                background: #0984e3;
+                border: 0;
+                color: cornsilk;
+                
+                font-size: 12px;
+                cursor: pointer;
+            }
+
+        }
+    }
+}
+
+
+.animator-hor{
+    animation: flash_hor .4s linear infinite;
+}
+.animator-ver{
+    animation: flash_ver .4s linear infinite;
+}
+ 
+@keyframes flash_hor{
+    from {
+        left: 60px;
+    }
+    to {
+        left: 50px;
+    }
+}
+@keyframes flash_ver{
+    from {
+        left: 60px;
+    }
+    to {
+        left: 50px;
+    }
+}
